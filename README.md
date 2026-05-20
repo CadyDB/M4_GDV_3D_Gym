@@ -7,3 +7,7 @@ Hier is een scene met wat bomen, containers, barrels en crates. Het is een simpe
 ![Players :D](Gifs/PlayersAdded.gif)
 
 Hier zijn 2 spelers, speler 1 is rood, speler 2 is blauw, ze hebben allebij dezelfde scripts alleen andere action maps. (ik heb hier een beetje hoofdpijn van gekregen)
+
+![Hardanimation](Gifs/Animationz.gif)
+
+Een geanimeerde speler, de jump, de walking, sprinting, jumping werken allemaal prima. (ik wil niet meer)

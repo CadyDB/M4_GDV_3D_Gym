@@ -11,7 +11,9 @@ public class PlayerInput : MonoBehaviour
     private InputAction moveAction;
     private InputAction jumpAction;
     private InputAction sprintAction;
-    private float speed = 5f;
+    private float moveSpeed = 5f;
+    
+    private Animator animator;
 
     private Rigidbody rb;
 
@@ -21,6 +23,9 @@ public class PlayerInput : MonoBehaviour
         moveAction = map.FindAction("Move");
         jumpAction = map.FindAction("Jump");
         sprintAction = map.FindAction("Sprint");
+
+        animator = GetComponent<Animator>();
+
     }
 
     void OnEnable()
@@ -53,23 +58,30 @@ public class PlayerInput : MonoBehaviour
         {
             Debug.Log("Jump Released");
             rb.AddForce(Vector3.up * 300f, ForceMode.Force);
+            animator.SetTrigger("Jump");
         }
 
        
 
-        if (sprintAction.IsPressed())
-        {
+       if (sprintAction.IsPressed())
+         {
             Debug.Log("Sprint Held");
-            speed = 10f;
-        }
-        else
-        {
-            speed = 5f;
-        }
+            moveSpeed = 10f;
+         }
+      else
+         {
+           moveSpeed = 5f;
+         }
 
 
         Vector2 moveInput = moveAction.ReadValue<Vector2>();
-        transform.Translate(moveInput.y * transform.forward * Time.deltaTime * speed, Space.World);
+
+        float currentMoveSpeed = moveInput.y * moveSpeed * Time.deltaTime;
+
+        transform.Translate(transform.forward * currentMoveSpeed, Space.World);
         transform.Rotate(Vector3.up, moveInput.x * Time.deltaTime * 100f, Space.World);
+
+        animator.SetFloat("Speed", currentMoveSpeed);
+       
     }
 }
