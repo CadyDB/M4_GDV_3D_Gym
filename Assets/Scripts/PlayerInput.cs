@@ -15,7 +15,7 @@ public class PlayerInput : MonoBehaviour
     
     private Animator animator;
 
-    private Rigidbody rb;
+    private CharacterController cc;
 
     void Awake()
     {
@@ -40,7 +40,7 @@ public class PlayerInput : MonoBehaviour
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        cc = GetComponent<CharacterController>();
     }
 
     
@@ -57,12 +57,11 @@ public class PlayerInput : MonoBehaviour
         else if (jumpAction.WasReleasedThisFrame())
         {
             Debug.Log("Jump Released");
-            rb.AddForce(Vector3.up * 300f, ForceMode.Force);
+            //rb.AddForce(Vector3.up * 300f, ForceMode.Force);
             animator.SetTrigger("Jump");
         }
 
        
-
        if (sprintAction.IsPressed())
          {
             Debug.Log("Sprint Held");
@@ -78,7 +77,10 @@ public class PlayerInput : MonoBehaviour
 
         float currentMoveSpeed = moveInput.y * moveSpeed * Time.deltaTime;
 
-        transform.Translate(transform.forward * currentMoveSpeed, Space.World);
+        cc.Move(transform.forward * currentMoveSpeed);
+
+
+        //transform.Translate(transform.forward * currentMoveSpeed, Space.World);
         transform.Rotate(Vector3.up, moveInput.x * Time.deltaTime * 100f, Space.World);
 
         animator.SetFloat("Speed", currentMoveSpeed);
