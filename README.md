@@ -12,4 +12,3 @@ Hier zijn 2 spelers, speler 1 is rood, speler 2 is blauw, ze hebben allebij deze
 
 Een geanimeerde speler, de jump, de walking, sprinting, jumping werken allemaal prima. (ik wil niet meer)
 
-geen nieuwe gif van de recente opdracht, maar het werkt soort van
