@@ -12,4 +12,6 @@ Hier zijn 2 spelers, speler 1 is rood, speler 2 is blauw, ze hebben allebij deze
 
 Een geanimeerde speler, de jump, de walking, sprinting, jumping werken allemaal prima. (ik wil niet meer)
 
-Character draait constant. Geen beweging, geen gif.
+![beweging](Gifs/script.gif)
+
+hier met een aangepast script beweegt de speler beter.
